@@ -70,5 +70,14 @@
           margin-top: -3px;
         }
       }
+
+      &--small {
+        color: var(--color--purple);
+        background: rgba(#fff, $alpha: 0.85);
+        text-transform: capitalize;
+        padding: 2px 8px;
+        font-size: 12px;
+        border-radius: 4px;
+      }
     }
   }

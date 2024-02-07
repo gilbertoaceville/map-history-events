@@ -1,4 +1,8 @@
+import { LatLngTuple } from "leaflet";
 import { HistoricalEvent } from "../types/event";
+
+export const DEFAULT_POSITION: LatLngTuple = [51.505, -0.09];
+export const DEFAULT_ZOOM = 13;
 
 const eventsData: HistoricalEvent[] = [
   // War

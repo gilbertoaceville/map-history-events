@@ -69,7 +69,7 @@ body {
     flex-direction: column;
   }
 
-  .map-content {
+  .content {
     width: 75%;
 
     @media screen and (max-width: 1298px) {
@@ -93,8 +93,8 @@ body {
 
 .liked-events {
   flex: 1;
-  padding: var(--brad-2) var(--brad-4);
-  border-radius: var(--brad-2);
+  padding: 1rem 2rem;
+  border-radius: 1rem;
   background-color: var(--events--bg);
   box-shadow: var(--box-shadow);
   border: 2px solid var(--border-color);
