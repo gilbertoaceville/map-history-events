@@ -58,7 +58,7 @@ body {
 }
 
 .content-wrapper {
-  padding: 2rem;
+  padding: var(--brad-4);
   width: 100%;
   height: 100%;
 
@@ -67,6 +67,7 @@ body {
 
   @media screen and (max-width: 895px) {
     flex-direction: column;
+    padding: var(--brad-2);
   }
 
   .content {
@@ -93,8 +94,8 @@ body {
 
 .liked-events {
   flex: 1;
-  padding: 1rem 2rem;
-  border-radius: 1rem;
+  padding: var(--brad-2) var(--brad-4);
+  border-radius: var(--brad-2);
   background-color: var(--events--bg);
   box-shadow: var(--box-shadow);
   border: 2px solid var(--border-color);
@@ -133,14 +134,3 @@ body {
     width: 4px;
   }
 }
-
-/* Apply dark theme when user prefers dark color scheme */
-// @media (prefers-color-scheme: dark) {
-//   .light-theme {
-//     display: none; /* Hide light theme */
-//   }
-
-//   .dark-theme {
-//     display: block; /* Show dark theme */
-//   }
-// }

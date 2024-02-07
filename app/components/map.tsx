@@ -21,6 +21,8 @@ export default function Map() {
     handleFavourite,
     activeEvent,
     setActiveEvent,
+    selectedCategory,
+    setSelectedCategory,
     handleListItem,
   } = useMapClient();
   const isFavourite = favourites.includes(activeEvent?.id as number);
@@ -28,7 +30,7 @@ export default function Map() {
   return (
     <div className="content-wrapper">
       <div className="content flex flex-col gap-6 w-full h-full">
-        <FilterCategories />
+        <FilterCategories setSelectedCategory={setSelectedCategory} />
         <MapContainer
           center={DEFAULT_POSITION}
           zoom={DEFAULT_ZOOM}
@@ -39,16 +41,18 @@ export default function Map() {
             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {(events || []).map((event, index) => {
-            return (
-              <Marker
-                key={`${event?.id}-${index}`}
-                position={event?.position}
-                icon={icon}
-                eventHandlers={{ click: () => setActiveEvent(event) }}
-              />
-            );
-          })}
+          {(events || [])
+            .filter((event) => !selectedCategory || event.category === selectedCategory)
+            .map((event, index) => {
+              return (
+                <Marker
+                  key={`${event?.id}-${index}`}
+                  position={event?.position}
+                  icon={icon}
+                  eventHandlers={{ click: () => setActiveEvent(event) }}
+                />
+              );
+            })}
           {activeEvent && (
             <Popup position={activeEvent.position}>
               <div className="popup-inner">
@@ -85,7 +89,7 @@ export default function Map() {
           )}
 
           {activeEvent && (
-            <FlyToMarker position={activeEvent.position} zoomLevel={15} />
+            <FlyToMarker position={activeEvent.position} zoomLevel={15} duration={2} />
           )}
         </MapContainer>
       </div>
